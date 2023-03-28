@@ -11,6 +11,7 @@ struct Question{
     let question : String
     let hint: [String]
     
+    
     init(question: String, hint: [String]) {
         self.question = question
         self.hint = hint

@@ -12,7 +12,6 @@ import Then
 
 //ios 기본 지식을 스마트러닝으로 공부하는 app
 class ViewController: UIViewController {
-    
     //전체 스택뷰
     let stackView = UIStackView().then{
         $0.axis = .vertical
@@ -21,7 +20,6 @@ class ViewController: UIViewController {
     
     //질문
     let questionLabel = UILabel().then{
-        $0.backgroundColor = .red
         $0.numberOfLines = 0
     }
     
@@ -50,20 +48,51 @@ class ViewController: UIViewController {
         layout()
         updateUI()
     }
-
-
 }
 
 extension ViewController{
     
+    enum state{
+        case base
+        case retry
+    }
+    
     @objc func knownClick(){
-        tool.nextQuestion(value: true)
-        
+        let value = tool.nextQuestion(value: true)
+        alertPopUp(value)
         Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
     }
     
     @objc func unknownClick(){
-        tool.nextQuestion(value: false)
+        let popUp = tool.nextQuestion(value: false)
+        alertPopUp(popUp)
+        Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
+    }
+    
+    func alertPopUp(_ value: Bool){
+        if value{
+            let endController = UIAlertController(title: "끝입니다!", message: "총 \(tool.questions.count)중에 \(tool.knownInfo.count)를 알고 있습니다!", preferredStyle: .alert)
+            let retry = UIAlertAction(title: "처음부터", style: .default){_ in
+                self.tool.knownInfo.removeAll()
+                self.tool.unKnownInfo.removeAll()
+                self.updateUI()
+            }
+            
+            if !self.tool.unKnownInfo.isEmpty{
+                let nuknownRetry = UIAlertAction(title: "모르는 것만", style: .default){_ in
+                    self.tool.questions = self.tool.unKnownInfo
+                    self.tool.knownInfo.removeAll()
+                    self.tool.unKnownInfo.removeAll()
+                    self.updateUI()
+                }
+                endController.addAction(nuknownRetry)
+            }
+
+            endController.addAction(retry)
+
+            
+            present(endController, animated: true)
+        }
     }
     
     @objc func hintClick(){

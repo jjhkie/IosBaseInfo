@@ -9,10 +9,12 @@ import UIKit
 
 
 struct QuestionTool{
-    let questions = [
+    var questions = [
         Question(question: "Bouunds와 Frame의 차이점을 설명하시오", hint: ["https://jjhkie.tistory.com/149"]),
         Question(question: "실제 디바이스가 없을 경우 개발 환경에서 할 수 있는 것과 없는 것을 설명하시오", hint: ["https://jjhkie.tistory.com/193"])
     ]
+    
+    lazy var initialInfo: [Question] = []
     
     lazy var knownInfo: [Question] = []
     
@@ -24,7 +26,7 @@ struct QuestionTool{
         return questions[questionNumber].question
     }
     
-    mutating func nextQuestion(value : Bool){
+    mutating func nextQuestion(value : Bool) -> Bool{
         if value{
             knownInfo.append(questions[questionNumber])
         }else{
@@ -32,17 +34,11 @@ struct QuestionTool{
         }
         
         if questionNumber + 1 == questions.count{
-            let endController = UIAlertController(title: "끝입니다!", message: "총 \(questions.count)중에 \(knownInfo.count)를 알고 있습니다!", preferredStyle: .alert)
-            let retry = UIAlertAction(title: "처음부터", style: .default){[weak self] _ in
-                guard var strongSelf = self else { return}
-                strongSelf.questionNumber = 0
-            }
-            
-            let nuknownRetry = UIAlertAction(title: "모르는 것만", style: .default){_ in
-                
-            }
+            questionNumber = 0
+            return true
         }else{
             questionNumber += 1
+            return false
         }
 
     }
