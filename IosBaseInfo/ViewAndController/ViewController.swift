@@ -22,19 +22,25 @@ class ViewController: UIViewController {
     //질문
     let questionLabel = UILabel().then{
         $0.backgroundColor = .red
+        $0.numberOfLines = 0
     }
     
     //알고있는 
     let knownLabel = RoundButton().then{
         $0.roundButton(style: .known )
+        $0.addTarget(self, action: #selector(knownClick), for: .touchDown)
     }
     
     //모르는
     let unknownLabel =  RoundButton().then{
         $0.roundButton(style: .unknown )
+        $0.addTarget(self, action: #selector(unknownClick), for: .touchDown)
     }
     //힌트
     let hintLabel = UIButton()
+    
+    //기능
+    var tool = QuestionTool()
     
 
     override func viewDidLoad() {
@@ -42,6 +48,7 @@ class ViewController: UIViewController {
         
         attribute()
         layout()
+        updateUI()
     }
 
 
@@ -49,7 +56,23 @@ class ViewController: UIViewController {
 
 extension ViewController{
     
+    @objc func knownClick(){
+        tool.nextQuestion(value: true)
+        
+        Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
+    }
+    
+    @objc func unknownClick(){
+        tool.nextQuestion(value: false)
+    }
+    
+    @objc func hintClick(){
+        print("hint")
+    }
 
+    @objc func updateUI(){
+        questionLabel.text = tool.QuestionText()
+    }
     
     private func attribute(){
         
@@ -60,7 +83,6 @@ extension ViewController{
         [questionLabel,knownLabel,unknownLabel].forEach{
             stackView.addArrangedSubview($0)
         }
-        
         
         view.addSubview(stackView)
         

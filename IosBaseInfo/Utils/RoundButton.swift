@@ -17,8 +17,8 @@ class RoundButton: UIButton{
         config.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 0)
         
         configuration = config
+       
     }
-    
     
     enum ButtonStyle{
         case known
@@ -47,5 +47,8 @@ class RoundButton: UIButton{
                 return UIColor.cyan
             }
         }
+        
     }
+    
+
 }
