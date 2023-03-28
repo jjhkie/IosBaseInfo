@@ -13,6 +13,11 @@
 		B97BB22929D27D99007A9F36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B97BB22729D27D99007A9F36 /* Main.storyboard */; };
 		B97BB22B29D27D9A007A9F36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B97BB22A29D27D9A007A9F36 /* Assets.xcassets */; };
 		B97BB22E29D27D9A007A9F36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B97BB22C29D27D9A007A9F36 /* LaunchScreen.storyboard */; };
+		B97BB23729D28147007A9F36 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B97BB23629D28147007A9F36 /* SnapKit */; };
+		B97BB23929D2839C007A9F36 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97BB23829D2839C007A9F36 /* Question.swift */; };
+		B97BB23E29D285B0007A9F36 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = B97BB23D29D285B0007A9F36 /* Then */; };
+		B97BB24029D286E2007A9F36 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97BB23F29D286E2007A9F36 /* RoundButton.swift */; };
+		B97BB24329D2A82C007A9F36 /* QuestionTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97BB24229D2A82C007A9F36 /* QuestionTool.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,9 @@
 		B97BB22A29D27D9A007A9F36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B97BB22D29D27D9A007A9F36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B97BB22F29D27D9A007A9F36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B97BB23829D2839C007A9F36 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		B97BB23F29D286E2007A9F36 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		B97BB24229D2A82C007A9F36 /* QuestionTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTool.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +39,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B97BB23729D28147007A9F36 /* SnapKit in Frameworks */,
+				B97BB23E29D285B0007A9F36 /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,13 +68,40 @@
 			children = (
 				B97BB22129D27D99007A9F36 /* AppDelegate.swift */,
 				B97BB22329D27D99007A9F36 /* SceneDelegate.swift */,
-				B97BB22529D27D99007A9F36 /* ViewController.swift */,
+				B97BB24129D286E6007A9F36 /* Utils */,
+				B97BB23A29D2848F007A9F36 /* Model */,
+				B97BB23B29D284C7007A9F36 /* ViewAndController */,
 				B97BB22729D27D99007A9F36 /* Main.storyboard */,
 				B97BB22A29D27D9A007A9F36 /* Assets.xcassets */,
 				B97BB22C29D27D9A007A9F36 /* LaunchScreen.storyboard */,
 				B97BB22F29D27D9A007A9F36 /* Info.plist */,
 			);
 			path = IosBaseInfo;
+			sourceTree = "<group>";
+		};
+		B97BB23A29D2848F007A9F36 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B97BB23829D2839C007A9F36 /* Question.swift */,
+				B97BB24229D2A82C007A9F36 /* QuestionTool.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B97BB23B29D284C7007A9F36 /* ViewAndController */ = {
+			isa = PBXGroup;
+			children = (
+				B97BB22529D27D99007A9F36 /* ViewController.swift */,
+			);
+			path = ViewAndController;
+			sourceTree = "<group>";
+		};
+		B97BB24129D286E6007A9F36 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B97BB23F29D286E2007A9F36 /* RoundButton.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +120,10 @@
 			dependencies = (
 			);
 			name = IosBaseInfo;
+			packageProductDependencies = (
+				B97BB23629D28147007A9F36 /* SnapKit */,
+				B97BB23D29D285B0007A9F36 /* Then */,
+			);
 			productName = IosBaseInfo;
 			productReference = B97BB21E29D27D99007A9F36 /* IosBaseInfo.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +152,10 @@
 				Base,
 			);
 			mainGroup = B97BB21529D27D99007A9F36;
+			packageReferences = (
+				B97BB23529D28147007A9F36 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				B97BB23C29D285B0007A9F36 /* XCRemoteSwiftPackageReference "Then" */,
+			);
 			productRefGroup = B97BB21F29D27D99007A9F36 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -139,6 +184,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B97BB22629D27D99007A9F36 /* ViewController.swift in Sources */,
+				B97BB24029D286E2007A9F36 /* RoundButton.swift in Sources */,
+				B97BB23929D2839C007A9F36 /* Question.swift in Sources */,
+				B97BB24329D2A82C007A9F36 /* QuestionTool.swift in Sources */,
 				B97BB22229D27D99007A9F36 /* AppDelegate.swift in Sources */,
 				B97BB22429D27D99007A9F36 /* SceneDelegate.swift in Sources */,
 			);
@@ -358,6 +406,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B97BB23529D28147007A9F36 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		B97BB23C29D285B0007A9F36 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B97BB23629D28147007A9F36 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B97BB23529D28147007A9F36 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		B97BB23D29D285B0007A9F36 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B97BB23C29D285B0007A9F36 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B97BB21629D27D99007A9F36 /* Project object */;
 }
